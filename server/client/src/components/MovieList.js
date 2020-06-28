@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Movie from "./Movie";
 import { connect } from "react-redux";
 import * as actions from '../actions';
-import _ from "lodash";
 import InfiniteScroll from 'react-infinite-scroller';
 import SearchBar from './Searchbar';
 
@@ -17,9 +16,10 @@ class MovieList extends Component {
 
 
   render() {
-    //loops through the movies and prints each one
-    const movies = _.map(this.props.movies, (m) => {
-      return <Movie id={m.id} key={m.id} title={m.title} img={m.poster_path} />
+    //loops through the movie order and prints each one
+    const movies = this.props.order.map((id) => {
+    const movie = this.props.movies[id];
+      return <Movie key={movie.id} id={movie.id} title={movie.title} img={movie.poster_path} />
     });
 
   
@@ -31,7 +31,7 @@ class MovieList extends Component {
         pageStart={0}
         hasMore={this.props.currentPage < this.props.totalPages ? true : false}> 
         <MovieGrid>
-          {this.props.totalPages === 0 ? "Sorry, We could not find any movies that matched your search." : movies}
+          {this.props.totalPages === 0 ? <Error>Sorry, We could not find any movies that matched your search.</Error> : movies}
         </MovieGrid>
       </InfiniteScroll>
       </>
@@ -45,6 +45,7 @@ function mapStateToProps (state) {
     movies: state.movies, 
     totalPages: state.total_pages, 
     search: state.search,
+    order: state.order,
     currentPage: state.current_page }
 };
 
@@ -59,4 +60,8 @@ flex-direction: row;
 flex-wrap: wrap;
 padding: 2em;
 margin: 0 auto;
+`;
+
+const Error = styled.p`
+padding-top:20px;
 `;

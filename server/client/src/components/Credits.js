@@ -9,7 +9,8 @@ class Credits extends Component {
     
 
   render() {
-    if (this.props.cast == undefined){
+    //if error is returned for the Cast/Crew
+    if (this.props.cast === undefined){
         return(
           <>
           <br/>
@@ -18,35 +19,36 @@ class Credits extends Component {
         )
       }
 
-    //Declaring the variables for the profile pictures
-    const PICTURE_PATH = "http://image.tmdb.org/t/p/w185";
-    let profilePic
 
     const renderCastMember = (castMember) => {
         
         return (
-          <div>
+          <div key={castMember.cast_id}>
             <Poster
-              src={castMember.profile_path == null ? 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB466677935_.png' : `http://image.tmdb.org/t/p/w185${castMember.profile_path}`}
+              src={castMember.profile_path === null ? 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB466677935_.png' : `http://image.tmdb.org/t/p/w185${castMember.profile_path}`}
               alt="profile"
               style={{ boxShadow: "0 5px 30px black" }}
-              id={castMember.cast_id} />
-              <Name>
+              id={castMember.cast_id} 
+            />
+            <Name>
               {castMember.character}
-              </Name>
-              <NameSmall>
-             {castMember.name}
-              </NameSmall>
+            </Name>
+            <NameSmall>
+              {castMember.name}
+            </NameSmall>
           </div>
         );
     }
 
 
     const renderCrewMember = (crewMember) => {
+      
         return (
-          <NameSmall>
-          {crewMember.name}
-           </NameSmall>
+        <div key={crewMember.credit_id}>
+          <NameSmall >
+            {crewMember.name}
+          </NameSmall>
+        </div>
         );
     }
     
@@ -67,7 +69,6 @@ class Credits extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('credits', state.credits)
   return {
     cast: state.credits.cast,
     crew: state.credits.crew
@@ -114,3 +115,4 @@ const Poster = styled.img`
     transition-duration: 300ms;
   }
 `;
+

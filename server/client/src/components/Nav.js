@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import styled from "styled-components";
 import * as actions from '../actions';
@@ -40,28 +40,9 @@ const NavContainer = styled.div`
     background-color:hsl(0, 0%, 13%);
     border: none;
     outline:none;
+    font-family: Oswald, sans-serif
   }
   a {
     color: #fff;
-  }
-`;
-
-const NavUl = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  list-style: none;
-
-  li:first-child {
-    float: left;
-  }
-
-  li {
-    margin-left: 0.8em;
-    padding: 0.5em;
-  }
-
-  li a {
-    color: whitesmoke;
   }
 `;

@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-//returns all movies by most recent
+//returns all movies 
 app.get('/', (req, res) => {
     axios.get(`${baseURL}discover/movie?${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${req.query.page}`
     ).then(function (response) {
@@ -26,9 +26,8 @@ app.get('/', (req, res) => {
   });
 
 
-  //returns results for specific search
+  //returns results for specific search query
   app.get('/search', (req, res) => {
-    console.log(req.query)
     //if user searched for a movie
     if(req.query.search === undefined){
         res.status(404);
@@ -66,11 +65,11 @@ app.get('/', (req, res) => {
 
   //gets movie credits
   app.get('/:movieId', (req, res) => {
+    //if invalid id number is sent
     if (isNaN(req.params.movieId) == true){
         res.status(404);
         return res.end(`Id must be a number.`);
     }
-    //if user searched for a movie
     axios.get(`${baseURL}movie/${req.params.movieId}/credits?${apiKey}&language=en-US`
     ).then(function (response) {
         res.send(response.data)

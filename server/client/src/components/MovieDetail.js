@@ -8,17 +8,21 @@ import Credits from "./Credits";
 import { Link } from "react-router-dom";
 
 class MovieDetail extends Component {
+
+  //fetches for cast and crew info when page loads
   componentDidMount(){
     this.props.fetchCredits(this.props.match.params.id)
   }
 
   render() {
-    //if Id nuber is invalid
-    if (this.props.movie == undefined){
+    //if Id number is invalid
+    if (this.props.movie === undefined){
       return(
         <>
         <br/>
-        <p>Sorry. We could not find that movie.</p>
+        <Link to="/">
+          <Error>Sorry. We could not find that movie. Click hereto return to the home page</Error>
+        </Link> 
         </>
       )
     }
@@ -53,12 +57,12 @@ class MovieDetail extends Component {
       <Fragment>
         
         <BackdropContainer backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
-        <Back><Link to='/' id='back'><i class="far fa-arrow-alt-circle-left"></i> Back</Link></Back>
+        <Back><Link to='/' id='back'><i className="far fa-arrow-alt-circle-left"></i> Back</Link></Back>
         </BackdropContainer>
         <DetailInfo>
           <Overdrive id={String(movie.id)}>
             <Poster
-              src={movie.poster_path == null ? 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB466677935_.png'  : `${POSTER_PATH}${movie.poster_path}`}
+              src={movie.poster_path === null ? 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB466677935_.png'  : `${POSTER_PATH}${movie.poster_path}`}
               alt="poster"
               style={{ boxShadow: "0 5px 30px black" }}
             />
@@ -101,7 +105,7 @@ const BackdropContainer = styled.div`
 
 const Back = styled.div`
   position: relative;
-  font-color: white;
+  font-color: black;
   font-size:30px
 `;
 
@@ -152,4 +156,8 @@ const Description = styled.div`
   color: whitesmoke;
   background: black;
   text-shadow: 1px 1px black;
+`;
+
+const Error = styled.p`
+padding-left:100px;
 `;

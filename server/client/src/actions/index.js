@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FETCH_MOVIES, FETCH_CREDITS, ERROR_MESSAGE} from './types';
 
-//Asks for list of all movies
+//List of all movies
 export const fetchAllMovies =  (page = 1) => dispatch => {
   axios.get(`http://localhost:5000?page=${page}`
   ).then(function (response) {
@@ -12,11 +12,10 @@ export const fetchAllMovies =  (page = 1) => dispatch => {
   });
 };
 
-//Asks for specific search of person or movie
+//Searches for movies with a specific cast/crew member or specific word in title
   export const fetchSearch = (type, query, page) => dispatch => {
     axios.get(`/search?type=${type}&search=${query}&page=${page}`
     ).then(function (response) {
-      console.log('response from fetchSearch', response)
       dispatch({ type: FETCH_MOVIES, payload: { data: response.data, search : {type: type, query: query }}});
     })
     .catch(function (error) {
@@ -24,12 +23,10 @@ export const fetchAllMovies =  (page = 1) => dispatch => {
     });
   };
 
-//Request Movie details
+//Request specific movies cast and crew information
 export const fetchCredits = (movieId) => dispatch => {
-  console.log('fetch credits action')
   axios.get(`/${movieId}`
   ).then(function (response) {
-    console.log('fetchcredits', response)
     dispatch({ type: FETCH_CREDITS, payload: response.data });
   })
   .catch(function (error) {
