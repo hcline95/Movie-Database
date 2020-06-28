@@ -100,7 +100,6 @@ const SearchButton = styled.button`
 background: hsl(0, 0%, 13%);
 box-sizing: border-box;
 border-radius: 4px;
-
 font-size: 16px;
 padding: 15px 20px 15px 20px;
 color: #fff;
