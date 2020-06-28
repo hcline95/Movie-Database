@@ -15,10 +15,8 @@ app.use(bodyParser.json());
 
 //returns all movies by most recent
 app.get('/', (req, res) => {
-    axios.get(`${baseURL}discover/movie?${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
+    axios.get(`${baseURL}discover/movie?${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${req.query.page}`
     ).then(function (response) {
-    //normalize movie results data
-    // response.data.results = response.data.results.map(movie=>({[movie.id]: movie}))
       res.send(response.data)
     })
     .catch(function (error) {
@@ -36,7 +34,7 @@ app.get('/', (req, res) => {
         res.status(404);
         return res.end(`Please enter a search term.`);
     }else if (req.query.type === 'movie'){
-        axios.get(`${baseURL}search/movie?${apiKey}&query=${req.query.search}`
+        axios.get(`${baseURL}search/movie?${apiKey}&query=${req.query.search}&page=${req.query.page}`
         ).then(function (response) {
             res.send(response.data)
         })
@@ -50,7 +48,7 @@ app.get('/', (req, res) => {
         axios.get(`${baseURL}search/person?${apiKey}&query=${req.query.search}`
         ).then(function (response) {
             //if Id number is found requests all their movies
-            axios.get(`${baseURL}discover/movie?${apiKey}&with_cast=${response.data.results[0].id}`
+            axios.get(`${baseURL}discover/movie?${apiKey}&with_cast=${response.data.results[0].id}&page=${req.query.page}`
             ).then(function (response) {
                 res.send(response.data)
             })
