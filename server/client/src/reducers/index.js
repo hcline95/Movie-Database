@@ -6,8 +6,6 @@ import CreditsReducer from "./reducer-credits";
 import SearchReducer from "./reducer-search";
 import OrderReducer from "./reducer-order";
 
-
-
 const rootReducer = combineReducers({
   movies: MoviesReducer,
   total_pages: TotalPagesReducer,

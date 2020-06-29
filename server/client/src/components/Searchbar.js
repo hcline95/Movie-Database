@@ -46,45 +46,44 @@ render(){
     }
 }
 
-    function mapStateToProps (state) {
-      return ({ 
-        search: state.search 
-      }
-      )};
+function mapStateToProps (state) {
+  return ({ 
+      search: state.search 
+    }
+  )};
 
-    export default connect(
-        mapStateToProps,
-        actions
-      )(SearchBar);
-
-
-      const SearchContainer = styled.div`
-      display:relative;
-      margin-top:40px;
-      text-align: center;
-     
-    `;
+export default connect(
+    mapStateToProps,
+    actions
+    )(SearchBar);
 
 
-    const SelectOption = styled.select`
-      font-size: 16px;
-      color: gray;
-      font-family: Oswald, sans-serif;
-      line-height: 1.9;
-      padding: .6em 1.5em .5em .8em;
-      box-sizing: border-box;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      appearance: none;
-      background-color: #fff;
-      cursor: pointer;  
-     &:hover{
-      color:#fff;
-      background-color:hsl(0, 0%, 13%);
-      } 
+const SearchContainer = styled.div`
+  display:relative;
+  margin-top:40px;
+  text-align: center;
+ `;
+
+
+const SelectOption = styled.select`
+  font-size: 16px;
+  color: gray;
+  font-family: Oswald, sans-serif;
+  line-height: 1.9;
+  padding: .6em 1.5em .5em .8em;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;  
+  &:hover{
+    color:#fff;
+    background-color:hsl(0, 0%, 13%);
+  } 
   `;
 
-  const Bar = styled.input`
+const Bar = styled.input`
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -97,14 +96,13 @@ render(){
 `;
 
 const SearchButton = styled.button`
-background: hsl(0, 0%, 13%);
-box-sizing: border-box;
-border-radius: 4px;
-font-size: 16px;
-padding: 15px 20px 15px 20px;
-color: #fff;
-display: inline-block;
-cursor: pointer;
-box-sizing: border-box;
-
+  background: hsl(0, 0%, 13%);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 15px 20px 15px 20px;
+  color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
 `;

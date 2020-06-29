@@ -15,18 +15,6 @@ class MovieDetail extends Component {
   }
 
   render() {
-    //if Id number is invalid
-    if (this.props.movie === undefined){
-      return(
-        <>
-        <br/>
-        <Link to="/">
-          <Error>Sorry. We could not find that movie. Click hereto return to the home page</Error>
-        </Link> 
-        </>
-      )
-    }
-
     //background picture paths
     const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
     const BACKDROP_PATH = "http://image.tmdb.org/t/p/w1280";
@@ -36,7 +24,6 @@ class MovieDetail extends Component {
 
 
     const renderMovieDetail = () => {
-      
         return (
           <div id="info">
             <h1>{movie.title}</h1>
@@ -52,12 +39,22 @@ class MovieDetail extends Component {
         );
     }
 
+    //if Id number is invalid
+    if (this.props.movie === undefined){
+      return(
+        <>
+        <br/>
+        <Link to="/">
+          <Error>Sorry. We could not find that movie. Click hereto return to the home page</Error>
+        </Link> 
+        </>
+      )
+    }
 
     return (
       <Fragment>
-        
         <BackdropContainer backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
-        <Back><Link to='/' id='back'><i className="far fa-arrow-alt-circle-left"></i> Back</Link></Back>
+          <Back><Link to='/' id='back'><i className="far fa-arrow-alt-circle-left"></i> Back</Link></Back>
         </BackdropContainer>
         <DetailInfo>
           <Overdrive id={String(movie.id)}>

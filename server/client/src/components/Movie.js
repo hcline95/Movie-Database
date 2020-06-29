@@ -5,6 +5,7 @@ import Overdrive from "react-overdrive";
 
 const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
 
+//rendering of one individual movie
 const Movie = (props) => {
   return (
     <Link to={`/${props.id}`}>
