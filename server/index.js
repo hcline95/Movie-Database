@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //returns all movies 
 app.get('/movies', (req, res) => {
-    axios.get(`${baseURL}discover/movie?${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${req.query.page}`
+    axios.get(`${baseURL}discover/movie?api_key=949bff8e08031ca57f596f86e7440dde&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${req.query.page}`
     ).then(function (response) {
       res.send(response.data)
     })

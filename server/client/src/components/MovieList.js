@@ -40,7 +40,6 @@ class MovieList extends Component {
 }
 
 function mapStateToProps (state) {
-  console.log(state)
   return { 
     movies: state.movies, 
     totalPages: state.total_pages, 
