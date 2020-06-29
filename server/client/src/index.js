@@ -21,8 +21,7 @@ render(
         <App>
           <Switch>
             <Route exact path="/" component={MovieList} />
-            <Route exact path="/movies" component={MovieList} />
-            <Route path="/:id" component={MovieDetail} />
+            <Route exact path="/:id" component={MovieDetail} />
           </Switch>
         </App>
       </Fragment>

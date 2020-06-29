@@ -11,9 +11,7 @@ class MovieDetail extends Component {
 
   //fetches for cast and crew info when page loads
   componentDidMount(){
-      if (this.props.movies===undefined){
         this.props.fetchCredits(this.props.match.params.id) 
-      }
   }
 
   render() {
@@ -77,8 +75,6 @@ class MovieDetail extends Component {
 }
 
 function mapStateToProps({ movies }, ownProps) {
-  console.log("Movies state in Movie Details", movies)
-  console.log("Movie that matches Id number in Movie Details", movies[ownProps.match.params.id])
   return {
     movie: movies[ownProps.match.params.id]
   };
