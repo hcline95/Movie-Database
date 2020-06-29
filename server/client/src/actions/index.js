@@ -30,6 +30,7 @@ export const fetchCredits = (movieId) => dispatch => {
     dispatch({ type: FETCH_CREDITS, payload: response.data });
   })
   .catch(function (error) {
+    dispatch({ type: ERROR_MESSAGE, payload: error });
     console.log(error);
   });
 };

@@ -45,7 +45,7 @@ class MovieDetail extends Component {
         <>
         <br/>
         <Link to="/">
-          <Error>Sorry. We could not find that movie. Click hereto return to the home page</Error>
+          <Error>Sorry. We could not find that movie. Click here to return to the home page</Error>
         </Link> 
         </>
       )
