@@ -88,6 +88,10 @@ app.get('/movies', (req, res) => {
     });
   })
 
+  app.get('/:movieId', (req, res) => {
+    res.redirect('/movies')
+  })
+
 
 // Server Setup
 const port = process.env.PORT || 5000;
