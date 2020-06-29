@@ -11,7 +11,9 @@ class MovieDetail extends Component {
 
   //fetches for cast and crew info when page loads
   componentDidMount(){
-    this.props.fetchCredits(this.props.match.params.id)
+    if (this.props.movie===undefined){
+      this.props.fetchCredits(this.props.match.params.id) 
+    }
   }
 
   render() {
