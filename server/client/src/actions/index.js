@@ -25,7 +25,7 @@ export const fetchAllMovies =  (page = 1) => dispatch => {
 
 //Request specific movies cast and crew information
 export const fetchCredits = (movieId) => dispatch => {
-  axios.get(`/${movieId}`
+  axios.get(`/credits/${movieId}`
   ).then(function (response) {
     dispatch({ type: FETCH_CREDITS, payload: response.data });
   })

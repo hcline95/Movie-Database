@@ -72,7 +72,7 @@ app.get('/movies', (req, res) => {
   });
 
   //gets movie credits
-  app.get('/:movieId', (req, res) => {
+  app.get('/credits/:movieId', (req, res) => {
     //if invalid id number is sent
     if (isNaN(req.params.movieId) == true){
         res.status(404);
