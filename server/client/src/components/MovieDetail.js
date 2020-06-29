@@ -75,6 +75,8 @@ class MovieDetail extends Component {
 }
 
 function mapStateToProps({ movies }, ownProps) {
+  console.log("Movies state in Movie Details", movies)
+  console.log("Movie that matches Id number in Movie Details", movies[ownProps.match.params.id])
   return {
     movie: movies[ownProps.match.params.id]
   };
