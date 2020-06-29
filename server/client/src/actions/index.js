@@ -3,7 +3,7 @@ import { FETCH_MOVIES, FETCH_CREDITS, ERROR_MESSAGE} from './types';
 
 //List of all movies
 export const fetchAllMovies =  (page = 1) => dispatch => {
-  axios.get(`?page=${page}`
+  axios.get(`/movies?page=${page}`
   ).then(function (response) {
     dispatch({ type: FETCH_MOVIES, payload: {data: response.data, search : { type : 'movie', query: '' }}});
   })
